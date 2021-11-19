@@ -1,42 +1,53 @@
 import React, {useState} from 'react';
 import { StyleSheet, FlatList } from 'react-native';
+import { CheckBox } from 'react-native-elements';
 
 import Screen from '../components/Screen';
 import ListItem from '../components/ListItem';
+import AppText from '../components/AppText';
 
-
-// const questions = [
-//     {
-//         id: 1,
-//         question: "1. This is the first question"
-//     },
-//     {
-//         id: 2,
-//         question: "2. Question number two, chief"
-//     }
-// ]
 
 function QuizScreen(props) {
   const handleCheckBoxClick = (yeet) => console.log({yeet});
+  const [selectedId, setSelectedId] = useState(null);
+
+  const renderItem = ({ item }) => {
+    const isChecked = item.id === selectedId ? true : false;
+
+    return (
+        <CheckBox
+            // https://reactnativeelements.com/docs/checkbox/
+                title={item.question}
+                // value={isSelected}
+                // onValueChange={setSelection(true)}
+                checked={isChecked}
+                style={styles.checkbox}
+                onPress={() => setSelectedId(item.id)}
+        />
+    );
+  };
 
     return (
     <Screen style={styles.container}>
+        <AppText>
+            {"Click on every item you have done.\nMPS stands for Member of the Preferred Sex."}
+        </AppText>
         <FlatList
             data={questions}
             keyExtractor={q => q.id.toString()}
-            renderItem={({item}) =>
-                <ListItem 
-                    question={item.question}
-                    onPress={handleCheckBoxClick(item.question)}
-                />
-                
-            }
+            renderItem={renderItem}
         >
             
         </FlatList>
     </Screen>
   );
 }
+
+const styles = StyleSheet.create({
+    checkbox: {
+        alignSelf: "center",
+      },
+});
 
 const questions = [
 	{
@@ -440,9 +451,5 @@ const questions = [
 		question: "100. Engaged in bestiality?"
 	},
 ]
-
-const styles = StyleSheet.create({
-  container: {}
-});
 
 export default QuizScreen;

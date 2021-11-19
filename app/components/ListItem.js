@@ -9,35 +9,28 @@ import AppText from './AppText';
 function QuizQuestion({question, onPress}) {
     const [isSelected, setSelection] = useState(false);
 
-    
+
     return (
-        <TouchableHighlight 
-            onPress={onPress}
-        >
-        <View style={styles.container}>
-            <View style={styles.detailsContainer}>
             <CheckBox
             // https://reactnativeelements.com/docs/checkbox/
                 title={question}
                 // value={isSelected}
-                // onValueChange={setSelection}
+                // onValueChange={setSelection(true)}
+                // checked={true}
                 style={styles.checkbox}
-                onPress={onPress}
+                onPress={() => console.log("deez")}
             />
-            </View>
-        </View>
-        </TouchableHighlight>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
-        padding: 15,
-        backgroundColor: colors.white,
+        // padding: 15,
+        // backgroundColor: colors.white,
     },
     detailsContainer: {
-        marginLeft: 10,
+        marginLeft: 4,
         justifyContent: "center",
         flex: 1
     },
