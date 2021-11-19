@@ -1,43 +1,3 @@
-import React, {useState} from 'react';
-import { StyleSheet, FlatList } from 'react-native';
-
-import Screen from '../components/Screen';
-import ListItem from '../components/ListItem';
-
-
-// const questions = [
-//     {
-//         id: 1,
-//         question: "1. This is the first question"
-//     },
-//     {
-//         id: 2,
-//         question: "2. Question number two, chief"
-//     }
-// ]
-
-function QuizScreen(props) {
-  const handleCheckBoxClick = (yeet) => console.log({yeet});
-
-    return (
-    <Screen style={styles.container}>
-        <FlatList
-            data={questions}
-            keyExtractor={q => q.id.toString()}
-            renderItem={({item}) =>
-                <ListItem 
-                    question={item.question}
-                    onPress={handleCheckBoxClick(item.question)}
-                />
-                
-            }
-        >
-            
-        </FlatList>
-    </Screen>
-  );
-}
-
 const questions = [
 	{
 		id: 1, 
@@ -374,8 +334,8 @@ const questions = [
 	{
 		id: 84,
 		question: "84. Had sexual intercourse with a virgin?",
-    },
-    {
+	},
+	{
 		id: 85,
 		question: "85. Had sexual intercourse without a condom?",
 	},
@@ -440,9 +400,3 @@ const questions = [
 		question: "100. Engaged in bestiality?"
 	},
 ]
-
-const styles = StyleSheet.create({
-  container: {}
-});
-
-export default QuizScreen;
