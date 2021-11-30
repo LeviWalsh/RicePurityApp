@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { StyleSheet, FlatList } from 'react-native';
-import { CheckBox } from 'react-native-elements';
+import { Button, CheckBox } from 'react-native-elements';
 
 import Screen from '../components/Screen';
 import ListItem from '../components/ListItem';
@@ -8,13 +8,21 @@ import AppText from '../components/AppText';
 
 
 function QuizScreen(props) {
-  const handleCheckBoxClick = (yeet) => console.log({yeet});
   const [selectedId, setSelectedId] = useState(null);
+  const [score, setScore] = useState(100);
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckBoxClick = () => {
+	// setScore(score-1)
+	// setIsChecked(!isChecked)
+	console.log("here")
+};
+
 
   const renderItem = ({ item }) => {
-    const isChecked = item.id === selectedId ? true : false;
 
     return (
+		
         <CheckBox
             // https://reactnativeelements.com/docs/checkbox/
                 title={item.question}
@@ -22,15 +30,20 @@ function QuizScreen(props) {
                 // onValueChange={setSelection(true)}
                 checked={isChecked}
                 style={styles.checkbox}
-                onPress={() => setSelectedId(item.id)}
+                onPress={handleCheckBoxClick()}
         />
     );
   };
 
     return (
+
     <Screen style={styles.container}>
+		<AppText> </AppText>
+		<Button onPress={() => setScore(score+1)}>Increse</Button>
+
         <AppText>
-            {"Click on every item you have done.\nMPS stands for Member of the Preferred Sex."}
+            {/* {"Click on every item you have done.\nMPS stands for Member of the Preferred Sex."} */}
+            {score}
         </AppText>
         <FlatList
             data={questions}
@@ -39,6 +52,11 @@ function QuizScreen(props) {
         >
             
         </FlatList>
+
+        {/* 
+        Calculate My Score
+        Clear CheckBoxes
+        */}
     </Screen>
   );
 }
