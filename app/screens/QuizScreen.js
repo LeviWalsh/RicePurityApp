@@ -10,14 +10,26 @@ function QuizScreen(props) {
   const [isChecked, setIsChecked] = useState([]);
 
   const renderItem = ({ item }) => {
-	const boxy = isChecked.includes(item.id);
+	const boxCheckedBool = isChecked.includes(item.id);
     return (
         <CheckBox
             // https://reactnativeelements.com/docs/checkbox/
                 title={item.question}
-                checked={boxy}
+                checked={boxCheckedBool}
                 style={styles.checkbox}
-                onPress={() => setIsChecked(isChecked => [...isChecked, item.id])}
+
+				onPress={() => {
+					if (isChecked.includes(item.id)) {
+						const index = isChecked.indexOf(item.id)
+						
+						var removedItem = isChecked.filter(function(value, index, arr){ 
+							return value != item.id;
+						});
+
+						setIsChecked(removedItem);
+					} else {
+						setIsChecked(isChecked => [...isChecked, item.id])}
+					}}
         />
     );
   };
