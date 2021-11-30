@@ -1,62 +1,39 @@
 import React, {useState} from 'react';
 import { StyleSheet, FlatList } from 'react-native';
-import { Button, CheckBox } from 'react-native-elements';
+import { CheckBox } from 'react-native-elements';
 
 import Screen from '../components/Screen';
-import ListItem from '../components/ListItem';
 import AppText from '../components/AppText';
 
 
 function QuizScreen(props) {
-  const [selectedId, setSelectedId] = useState(null);
-  const [score, setScore] = useState(100);
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleCheckBoxClick = () => {
-	// setScore(score-1)
-	// setIsChecked(!isChecked)
-	console.log("here")
-};
-
+  const [isChecked, setIsChecked] = useState([]);
 
   const renderItem = ({ item }) => {
-
+	const boxy = isChecked.includes(item.id);
     return (
-		
         <CheckBox
             // https://reactnativeelements.com/docs/checkbox/
                 title={item.question}
-                // value={isSelected}
-                // onValueChange={setSelection(true)}
-                checked={isChecked}
+                checked={boxy}
                 style={styles.checkbox}
-                onPress={handleCheckBoxClick()}
+                onPress={() => setIsChecked(isChecked => [...isChecked, item.id])}
         />
     );
   };
 
     return (
-
     <Screen style={styles.container}>
-		<AppText> </AppText>
-		<Button onPress={() => setScore(score+1)}>Increse</Button>
-
         <AppText>
-            {/* {"Click on every item you have done.\nMPS stands for Member of the Preferred Sex."} */}
-            {score}
+            {"Click on every item you have done.\nMPS stands for Member of the Preferred Sex."}
+            {"\n\n"}
+			{100 - isChecked.length}
         </AppText>
         <FlatList
             data={questions}
             keyExtractor={q => q.id.toString()}
             renderItem={renderItem}
-        >
-            
-        </FlatList>
-
-        {/* 
-        Calculate My Score
-        Clear CheckBoxes
-        */}
+        />
     </Screen>
   );
 }
