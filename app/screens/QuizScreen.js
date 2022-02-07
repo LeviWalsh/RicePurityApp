@@ -36,11 +36,10 @@ function QuizScreen(props) {
 
     return (
     <Screen style={styles.container}>
-        
 
         <FlatList
 			ListHeaderComponent={
-				<AppText>
+				<AppText style={styles.headerText}>
             		{"Click on every item you have done. MPS stands for Member of the Preferred Sex."}
         		</AppText>
 			}
@@ -48,8 +47,8 @@ function QuizScreen(props) {
             keyExtractor={q => q.id.toString()}
             renderItem={renderItem}
 			ListFooterComponent={
-				<AppText>
-					{"SCORE: "}{100 - isChecked.length}
+				<AppText style={styles.scoreText}>
+					{"Score: "}{100 - isChecked.length}
 				</AppText>
 			}
         />
@@ -62,7 +61,17 @@ function QuizScreen(props) {
 const styles = StyleSheet.create({
     checkbox: {
         alignSelf: "center",
-      },
+    },
+	container: {
+
+	},
+	headerText: {
+		textAlign: "center",
+	},
+	scoreText: {
+		textAlign: "center",
+		fontSize: 25
+	},
 });
 
 const questions = [
