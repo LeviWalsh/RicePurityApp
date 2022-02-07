@@ -36,16 +36,25 @@ function QuizScreen(props) {
 
     return (
     <Screen style={styles.container}>
-        <AppText>
-            {"Click on every item you have done.\nMPS stands for Member of the Preferred Sex."}
-            {"\n\n"}
-			{100 - isChecked.length}
-        </AppText>
+        
+
         <FlatList
+			ListHeaderComponent={
+				<AppText>
+            		{"Click on every item you have done. MPS stands for Member of the Preferred Sex."}
+        		</AppText>
+			}
             data={questions}
             keyExtractor={q => q.id.toString()}
             renderItem={renderItem}
+			ListFooterComponent={
+				<AppText>
+					{"SCORE: "}{100 - isChecked.length}
+				</AppText>
+			}
         />
+
+		
     </Screen>
   );
 }
