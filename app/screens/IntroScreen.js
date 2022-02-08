@@ -6,15 +6,11 @@ import AppButton from '../components/AppButton';
 
 function IntroScreen(props) {
   return (
-    <ImageBackground
-        style={styles.background}
-        source={require("../../assets/background.jpg")}
-    >
-
-        {/* Put the logo up top */}
+    <Screen>
+        {/* TODO: Put the logo up top */}
         
         <AppText style={styles.backgroundText}>
-            {"\n\n\nThe Rice Purity test was created in 1924 at Rice University as a way for entering students to bond. Now it's used by many groups to learn more about each other."}
+            {"\n\n\nThe Rice Purity test was created in 1924 at Rice University as a way for entering students to bond. Now it's used by friends to learn more about each other."}
         </AppText>
         
         <AppText style={styles.cautionWord}>
@@ -26,9 +22,11 @@ function IntroScreen(props) {
         </AppText>
 
         <View style={styles.bottom}>
+            {/* TODO: OnPress takes you to the quiz screen */}
             <AppButton title={"Start Quiz"} />
         </View>
-    </ImageBackground>
+
+    </Screen>
 
   );
 }
