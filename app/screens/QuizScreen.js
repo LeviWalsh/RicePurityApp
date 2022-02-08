@@ -6,7 +6,7 @@ import Screen from '../components/Screen';
 import AppText from '../components/AppText';
 
 
-function QuizScreen(props) {
+function QuizScreen({navigation}) {
   const [isChecked, setIsChecked] = useState([]);
 
   const renderItem = ({ item }) => {

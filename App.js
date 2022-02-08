@@ -34,36 +34,28 @@ function DetailsScreen({ navigation }) {
   );
 }
 
-function LogoTitle() {
-  return (
-    <View
-      style={{ backgroundColor: "yellow", width: 50, height: 50 }}
-      
-    />
-  );
-}
-
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator 
-        initialRouteName='Home'
+        initialRouteName='Intro'
         screenOptions={{headerShown: false}}
       >
         <Stack.Screen 
-          name="Home" 
-          component={HomeScreen}
+          name="Intro" 
+          component={IntroScreen}
           options={{ title: 'My Home' }} />
         <Stack.Screen 
-          name="Details" 
-          component={DetailsScreen}
-          options={{ headerTitle: (props) => <LogoTitle /> }} />
+          name="Quiz" 
+          component={QuizScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {},
