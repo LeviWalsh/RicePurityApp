@@ -40,7 +40,7 @@ function QuizScreen({navigation}) {
         <FlatList
 			ListHeaderComponent={
 				<AppText style={styles.headerText}>
-            		{"Click on every item you have done. MPS stands for Member of the Preferred Sex."}
+            		{"\nClick on every item you have done. MPS stands for Member of the Preferred Sex."}
         		</AppText>
 			}
             data={questions}

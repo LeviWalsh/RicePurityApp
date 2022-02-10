@@ -72,12 +72,13 @@ const styles = StyleSheet.create({
     },
     top: {
         flex: 1,
-        justifyContent: "flex-start",
+        justifyContent: "center",
+        alignItems: "center",
         marginTop: 20,
         width: "100%"
     },
     logo: {
-        width: '100%',
+        width: '95%',
         height: undefined,
         aspectRatio: 10,
     }
